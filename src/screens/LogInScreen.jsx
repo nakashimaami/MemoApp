@@ -2,9 +2,7 @@ import React, { useState, useEffect,} from 'react';
 import {
   View, Text, TextInput, StyleSheet, TouchableOpacity,Alert,
 } from 'react-native';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import { onAuthStateChanged } from "firebase/auth";
+import firebase from 'firebase';
 
 import Button from '../components/Button';
 
@@ -36,7 +34,6 @@ export default function LogInScreen(props) {
             }); 
          })
          .catch((error) => {
-        //   console.log(error.code, error.message);
           Alert.alert(error.code);
          });
     }
