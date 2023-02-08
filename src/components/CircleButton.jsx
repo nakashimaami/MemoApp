@@ -1,16 +1,15 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { string, shape, func } from 'prop-types';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { AntDesign } from '@expo/vector-icons';
+import Icon from './icon';
+
+
 
 export default function CircleButton(props) {
-  // eslint-disable-next-line react/prop-types
   const { style, name, onPress } = props;
   return (
     <TouchableOpacity style={[styles.circleButton, style]} onPress={onPress}>
-      <AntDesign name={name} size={24} color="#862121" />
+      <Icon name={name} size={40} color="#862121" />
     </TouchableOpacity>
   );
 }

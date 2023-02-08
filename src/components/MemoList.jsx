@@ -1,4 +1,3 @@
-import { Feather } from '@expo/vector-icons';
 import React from 'react';
 import {
   View, Text, StyleSheet, TouchableOpacity,Alert,FlatList
@@ -7,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { shape, string, instanceOf, arrayOf } from 'prop-types';
 import firebase from 'firebase';
 
+import Icon from './icon';
 import { dateToString } from '../Utils';
 
 
@@ -51,7 +51,7 @@ export default function MemoList(props) {
                 style={styles.memoDelete}
                 onPress={ () => { deleteMemo(item.id) }}
             >
-                <Feather name="x" size={20} color="#B0B0B0" />
+                <Icon name="delete" size={24} color="#B0B0B0" />
             </TouchableOpacity>
         </TouchableOpacity>
     );
