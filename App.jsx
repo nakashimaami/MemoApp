@@ -25,9 +25,9 @@ LogBox.ignoreLogs(['Setting a timer']);
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator 
+      <Stack.Navigator
         initialRouteName="LogIn"
-        screenOptions={{ 
+        screenOptions={{
           headerStyle: { backgroundColor: '#05FF00' },
           headerTitleStyle: { color: '#862121' },
           headerTitle: 'MemoApp',
@@ -42,17 +42,17 @@ export default function App() {
         <Stack.Screen name="MemoDetail" component={MemoDetailScreen} />
         <Stack.Screen name="MemoEdit" component={MemoEditScreen} />
         <Stack.Screen name="MemoCreate" component={MemoCreateScreen} />
-        <Stack.Screen name="LogIn" 
-         component={LogInScreen} 
-         options={{
-          cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
-         }}
+        <Stack.Screen name="LogIn"
+          component={LogInScreen}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
+          }}
         />
-        <Stack.Screen name="SignUp" 
-         component={SignUpScreen} 
-         options={{
-          cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
-         }}
+        <Stack.Screen name="SignUp"
+          component={SignUpScreen}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

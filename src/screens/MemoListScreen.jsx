@@ -1,5 +1,5 @@
-import React, { memo, useEffect, useMemo, useState } from 'react';
-import { 
+import React, { useEffect, useState } from 'react';
+import {
   View, StyleSheet, Alert, Text,
 } from 'react-native';
 import firebase from 'firebase';
@@ -18,7 +18,7 @@ export default function MemoListScreen(props) {
     navigation.setOptions({
       headerRight: () => <LogOutButton />,
     });
-  },[]);
+  }, []);
 
   useEffect(() => {
     const db = firebase.firestore();
@@ -39,7 +39,7 @@ export default function MemoListScreen(props) {
         });
         setMemos(userMemos);
         setLoading(false);
-      },() => {
+      }, () => {
         setLoading(false);
         Alert.alert('データの読み込みに失敗しました。');
       });
@@ -53,10 +53,10 @@ export default function MemoListScreen(props) {
         <Loading isLoading={isLoading} />
         <View style={emptyStyles.inner}>
           <Text style={emptyStyles.title}>最初のメモを作成しよう！</Text>
-          <Button 
-            style={emptyStyles.button} 
+          <Button
+            style={emptyStyles.button}
             label="作成する"
-            onPress={() => {navigation.navigate('MemoCreate'); }}
+            onPress={() => { navigation.navigate('MemoCreate'); }}
           />
         </View>
       </View>
@@ -66,7 +66,7 @@ export default function MemoListScreen(props) {
   return (
     <View style={styles.container}>
       <MemoList memos={memos} />
-      <CircleButton 
+      <CircleButton
       name="plus" 
       onPress={() => { navigation.navigate('MemoCreate'); }}
       />
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 });
 
 const emptyStyles = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -98,4 +98,4 @@ const emptyStyles = StyleSheet.create({
   button: {
     alignSelf: 'center',
   },
-})
+});

@@ -3,8 +3,6 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import { string, shape, func } from 'prop-types';
 import Icon from './icon';
 
-
-
 export default function CircleButton(props) {
   const { style, name, onPress } = props;
   return (

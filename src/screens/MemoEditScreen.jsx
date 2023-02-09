@@ -10,19 +10,19 @@ import KeyboardSafeView from '../components/KeyboardSafeView';
 import { translateErrors } from '../Utils';
 
 export default function MemoEditScreen(props) {
-    const { navigation, route } = props;
-    const { id, bodyText } = route.params;
-    const [body, setBody] = useState(bodyText);
+  const { navigation, route } = props;
+  const { id, bodyText } = route.params;
+  const [body, setBody] = useState(bodyText);
 
-    function handlePress () {
-      const { currentUser } = firebase.auth();
-      if (currentUser) {
-        const db = firebase.firestore();
-        const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
-        ref.set({
-          bodyText: body,
-          updatedAt: new Date(),
-        }, { merge: true })
+  function handlePress() {
+    const { currentUser } = firebase.auth();
+    if (currentUser) {
+      const db = firebase.firestore();
+      const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
+      ref.set({
+        bodyText: body,
+        updatedAt: new Date(),
+      }, { merge: true })
         .then(() => {
           navigation.goBack();
         })
@@ -30,20 +30,20 @@ export default function MemoEditScreen(props) {
           const errorMsg = translateErrors(error.code);
           Alert.alert(errorMsg.title, errorMsg.description);
         });
-      }
     }
+  }
 
   return (
     <KeyboardSafeView style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
-         value={body} 
-         multiline 
-         style={styles.input} 
-         onChangeText={(text) => { setBody(text); }}
+          value={body}
+          multiline
+          style={styles.input}
+          onChangeText={(text) => { setBody(text); }}
         />
       </View>
-      <CircleButton 
+      <CircleButton
       name="check" 
       onPress={handlePress}
       />
@@ -54,7 +54,7 @@ export default function MemoEditScreen(props) {
 MemoEditScreen.propType = {
   route:shape({
     params: shape({ id: string, bodyText: string }),
-  }).isRequired
+  }).isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -72,6 +72,6 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     paddingTop: 32,
     paddingBottom: 32,
-    paddingHorizontal: 27,    
+    paddingHorizontal: 27,
   },
 });

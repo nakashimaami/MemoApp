@@ -3,12 +3,13 @@ import {
   View, Text, StyleSheet, TouchableOpacity,Alert,FlatList
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { shape, string, instanceOf, arrayOf } from 'prop-types';
+import {
+  shape, string, instanceOf, arrayOf,
+} from 'prop-types';
 import firebase from 'firebase';
 
 import Icon from './icon';
 import { dateToString } from '../Utils';
-
 
 export default function MemoList(props) {
   const { memos } = props;
@@ -19,7 +20,7 @@ export default function MemoList(props) {
     if (currentUser) {
       const db = firebase.firestore();
       const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
-      Alert.alert('メモを削除します','よろしいですか？',[
+      Alert.alert('メモを削除します', 'よろしいですか？', [
         {
           text: 'キャンセル',
           onPress: () => {},
@@ -39,41 +40,41 @@ export default function MemoList(props) {
 
   function renderItem({ item }) {
     return (
-        <TouchableOpacity 
-            style={styles.memoListItem}
-            onPress={ () => { navigation.navigate('MemoDetail',{ id: item.id }); }}
+      <TouchableOpacity
+        style={styles.memoListItem}
+        onPress={() => { navigation.navigate('MemoDetail', { id: item.id }); }}
+      >
+        <View style={styles.memoInner}>
+          <Text style={styles.memoListItemTitle} numberOfLines={1}>{item.bodyText}</Text>
+          <Text style={styles.memoListItemDate}>{dateToString(item.updatedAt)}</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.memoDelete}
+          onPress={() => { deleteMemo(item.id); }}
         >
-            <View style={styles.memoInner}>
-              <Text style={styles.memoListItemTitle} numberOfLines={1}>{item.bodyText}</Text>
-              <Text style={styles.memoListItemDate}>{dateToString(item.updatedAt)}</Text>
-            </View>
-            <TouchableOpacity 
-                style={styles.memoDelete}
-                onPress={ () => { deleteMemo(item.id) }}
-            >
-                <Icon name="delete" size={24} color="#B0B0B0" />
-            </TouchableOpacity>
+          <Icon name="delete" size={24} color="#B0B0B0" />
         </TouchableOpacity>
+      </TouchableOpacity>
     );
   }
 
   return (
     <View style={styles.container}>
-        <FlatList
-            data={memos}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-        />
+      <FlatList
+        data={memos}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 }
 
 MemoList.protoType = {
-    memos: arrayOf(shape({
-        id: string,
-        bodyText: string,
-        updateAt: instanceOf(Date),
-    })).isRequired,   
+  memos: arrayOf(shape({
+    id: string,
+    bodyText: string,
+    updateAt: instanceOf(Date),
+  })).isRequired,
 };
 
 const styles = StyleSheet.create({

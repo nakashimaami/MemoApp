@@ -11,23 +11,23 @@ import { translateErrors } from '../Utils';
 
 export default function MemoCreateScreen(props) {
   const { navigation } = props;
-  const [bodyText,setBodyText] = useState('');
+  const [bodyText, setBodyText] = useState('');
 
   function handlePress() {
     const { currentUser } = firebase.auth();
     const db = firebase.firestore();
     const ref = db.collection(`users/${currentUser.uid}/memos`);
     ref.add({
-        bodyText,
-        updatedAt: new Date(),
+      bodyText,
+      updatedAt: new Date(),
     })
-    .then(() => {
+      .then(() => {
         navigation.goBack();
-    })
-    .catch((error) => {
+      })
+      .catch((error) => {
         const errorMsg = translateErrors(error.code);
         Alert.alert(errorMsg.title, errorMsg.description);
-    });
+      });
   }
 
   return (
@@ -35,15 +35,15 @@ export default function MemoCreateScreen(props) {
       <View style={styles.inputContainer}>
         <TextInput
           value={bodyText}
-          multiline 
-          style={styles.input} 
+          multiline
+          style={styles.input}
           onChangeText={(text) => { setBodyText(text); }}
           autoFocus={true}
         />
       </View>
-      <CircleButton 
-      name="check" 
-      onPress={handlePress}
+      <CircleButton
+        name="check"
+        onPress={handlePress}
       />
     </KeyboardSafeView>
   );
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 27,
     flex: 1,
   },
-  inout: {
+  input: {
     flex: 1,
     textAlignVertical: 'top',
     fontSize: 16,

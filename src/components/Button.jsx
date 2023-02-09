@@ -11,7 +11,7 @@ export default function Button(props) {
   );
 }
 
-Button.prototypea = {
+Button.propType = {
   label: string.isRequired,
   onPress: func,
   styles: shape(),
@@ -24,7 +24,7 @@ Button.defaultProps = {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    backgroundColor:'#05FF00',
+    backgroundColor: '#05FF00',
     borderRadius: 4,
     alignSelf: 'flex-start',
     marginBottom: 24,
