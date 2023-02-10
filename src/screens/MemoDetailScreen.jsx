@@ -1,5 +1,5 @@
 import { shape, string } from 'prop-types';
-import React, { memo, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View, ScrollView, Text, StyleSheet,
 } from 'react-native';
@@ -9,8 +9,11 @@ import CircleButton from '../components/CircleButton';
 import { dateToString } from '../Utils';
 
 export default function MemoDetailScreen(props) {
-  const { navigation, route  } = props;
+  // eslint-disable-next-line react/prop-types
+  const { navigation, route } = props;
+  // eslint-disable-next-line react/prop-types
   const { id } = route.params;
+  // eslint-disable-next-line no-shadow
   const [memo, setMemo] = useState(null);
 
   useEffect(() => {
@@ -54,7 +57,7 @@ export default function MemoDetailScreen(props) {
 }
 
 MemoDetailScreen.propType = {
-  route:shape({
+  route: shape({
     params: shape({ id: string }),
   }).isRequired,
 };

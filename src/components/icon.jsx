@@ -6,7 +6,6 @@ import React from 'react';
 import icomoon from '../../assets/fonts/icomoon.ttf';
 import selection from '../../assets/fonts/selection.json';
 
-
 export default function Icon(props) {
   const [fontLoaded] = useFonts({ icomoon });
   const { name, size, color } = props;

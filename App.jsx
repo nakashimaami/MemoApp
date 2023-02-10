@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-first-prop-new-line */
 import * as React from 'react';
 import { LogBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -11,7 +12,7 @@ import MemoCreateScreen from './src/screens/MemoCreateScreen';
 import LogInScreen from './src/screens/LogInScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 
-import { firebaseConfig } from './env';
+import { firebaseConfig } from './.env';
 
 require('firebase/firestore');
 

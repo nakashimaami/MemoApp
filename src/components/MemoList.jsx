@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text, StyleSheet, TouchableOpacity,Alert,FlatList
+  View, Text, StyleSheet, TouchableOpacity, Alert, FlatList,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -8,10 +8,12 @@ import {
 } from 'prop-types';
 import firebase from 'firebase';
 
-import Icon from './icon';
+// eslint-disable-next-line import/no-unresolved
+import Icon from './Icon';
 import { dateToString } from '../Utils';
 
 export default function MemoList(props) {
+  // eslint-disable-next-line react/prop-types
   const { memos } = props;
   const navigation = useNavigation();
 
@@ -62,6 +64,7 @@ export default function MemoList(props) {
     <View style={styles.container}>
       <FlatList
         data={memos}
+        // eslint-disable-next-line react/jsx-no-bind
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />

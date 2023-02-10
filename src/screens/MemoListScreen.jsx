@@ -16,6 +16,7 @@ export default function MemoListScreen(props) {
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
     navigation.setOptions({
+      // eslint-disable-next-line react/no-unstable-nested-components
       headerRight: () => <LogOutButton />,
     });
   }, []);
@@ -67,8 +68,8 @@ export default function MemoListScreen(props) {
     <View style={styles.container}>
       <MemoList memos={memos} />
       <CircleButton
-      name="plus" 
-      onPress={() => { navigation.navigate('MemoCreate'); }}
+        name="plus"
+        onPress={() => { navigation.navigate('MemoCreate'); }}
       />
     </View>
   );

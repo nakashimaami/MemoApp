@@ -38,11 +38,13 @@ export default function MemoCreateScreen(props) {
           multiline
           style={styles.input}
           onChangeText={(text) => { setBodyText(text); }}
+          // eslint-disable-next-line react/jsx-boolean-value
           autoFocus={true}
         />
       </View>
       <CircleButton
         name="check"
+        // eslint-disable-next-line react/jsx-no-bind
         onPress={handlePress}
       />
     </KeyboardSafeView>

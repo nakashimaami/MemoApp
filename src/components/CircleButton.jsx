@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { string, shape, func } from 'prop-types';
-import Icon from './icon';
+import Icon from './Icon';
 
 export default function CircleButton(props) {
+  // eslint-disable-next-line react/prop-types
   const { style, name, onPress } = props;
   return (
     <TouchableOpacity style={[styles.circleButton, style]} onPress={onPress}>

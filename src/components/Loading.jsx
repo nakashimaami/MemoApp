@@ -3,6 +3,7 @@ import React from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 
 export default function Loading(props) {
+  // eslint-disable-next-line no-useless-rename
   const { isLoading: isLoading } = props;
   if (!isLoading) {
     return null;

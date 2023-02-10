@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {
-  View, Text, TextInput, StyleSheet, TouchableOpacity,Alert,
+  View, Text, TextInput, StyleSheet, TouchableOpacity, Alert,
 } from 'react-native';
 import firebase from 'firebase';
 
 import Button from '../components/Button';
 import Loading from '../components/Loading';
 import { translateErrors } from '../Utils';
-
 
 export default function LogInScreen(props) {
   const { navigation } = props;
@@ -54,8 +53,8 @@ export default function LogInScreen(props) {
         <Text style={styles.title}>Log In</Text>
         <TextInput
           style={styles.input}
-          value={email} 
-          onChangeText={(text) => {setEmail(text); }}
+          value={email}
+          onChangeText={(text) => { setEmail(text); }}
           autoCapitalize="none"
           keyboardType="email-address"
           placeholder="Email Address"
@@ -64,7 +63,7 @@ export default function LogInScreen(props) {
         <TextInput
           style={styles.input}
           value={password}
-          onChangeText={(text) => {setPassword(text); }}
+          onChangeText={(text) => { setPassword(text); }}
           autoCapitalize="none"
           placeholder="Password"
           secureTextEntry
@@ -72,6 +71,7 @@ export default function LogInScreen(props) {
         />
         <Button
           label="Submit"
+          // eslint-disable-next-line react/jsx-no-bind
           onPress={handlePress}
         />
         <View style={styles.footer}>
