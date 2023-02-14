@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View, Text, TextInput, StyleSheet, TouchableOpacity, Alert,
 } from 'react-native';
@@ -6,6 +6,7 @@ import firebase from 'firebase';
 
 import Button from '../components/Button';
 import Loading from '../components/Loading';
+import CancelLogIn from '../components/CancelLogIn';
 import { translateErrors } from '../Utils';
 
 export default function SignUpScreen(props) {
@@ -14,14 +15,27 @@ export default function SignUpScreen(props) {
   const [password, setPassword] = useState('');
   const [isLoading, setLoading] = useState(false);
 
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <CancelLogIn />,
+    });
+  }, []);
+
   function handlePress() {
     setLoading(true);
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    const { currentUser } = firebase.auth();
+    if (!currentUser) { return; }
+    const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+    currentUser.linkWithCredential(credential)
       .then(() => {
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'MemoList' }],
-        });
+        Alert.alert('登録完了', '登録したメールアドレスとパスワードは大切に保管してください。', [
+          {
+            text: 'OK',
+            onPress: () => {
+              navigation.reset({ index: 0, routes: [{ name: 'MemoList' }] });
+            },
+          },
+        ]);
       })
       .catch((error) => {
         const errorMsg = translateErrors(error.code);
@@ -57,11 +71,10 @@ export default function SignUpScreen(props) {
         />
         <Button
           label="Submit"
-          // eslint-disable-next-line react/jsx-no-bind
           onPress={handlePress}
         />
         <View style={styles.footer}>
-          <Text style={styles.footerText}>Already registered?</Text>
+          <Text style={styles.footerText}>Already registerd?</Text>
           <TouchableOpacity
             onPress={() => {
               navigation.reset({
@@ -96,9 +109,9 @@ const styles = StyleSheet.create({
   input: {
     fontSize: 16,
     height: 48,
-    borderColor: '#dddddd',
+    borderColor: '#DDDDDD',
     borderWidth: 1,
-    borderoundColor: '#ffffff',
+    backgroundColor: '#ffffff',
     paddingHorizontal: 8,
     marginBottom: 16,
   },
@@ -110,7 +123,7 @@ const styles = StyleSheet.create({
   footerLink: {
     fontSize: 14,
     lineHeight: 24,
-    color: '#05FF00',
+    color: '#467FD3',
   },
   footer: {
     flexDirection: 'row',

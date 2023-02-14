@@ -6,7 +6,7 @@ export function dateToString(date) {
 }
 
 export function translateErrors(code) {
-  const error = { title: 'エラー', description: '時間をおいてお試しください' };
+  const error = { title: 'エラー', description: '時間をおいてお試し下さい' };
   switch (code) {
     case 'auth/invalid-email':
       error.description = 'メールアドレスが不正です。';

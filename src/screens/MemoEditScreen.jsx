@@ -10,9 +10,7 @@ import KeyboardSafeView from '../components/KeyboardSafeView';
 import { translateErrors } from '../Utils';
 
 export default function MemoEditScreen(props) {
-  // eslint-disable-next-line react/prop-types
   const { navigation, route } = props;
-  // eslint-disable-next-line react/prop-types
   const { id, bodyText } = route.params;
   const [body, setBody] = useState(bodyText);
 
@@ -47,14 +45,13 @@ export default function MemoEditScreen(props) {
       </View>
       <CircleButton
         name="check"
-        // eslint-disable-next-line react/jsx-no-bind
         onPress={handlePress}
       />
     </KeyboardSafeView>
   );
 }
 
-MemoEditScreen.propType = {
+MemoEditScreen.propTypes = {
   route: shape({
     params: shape({ id: string, bodyText: string }),
   }).isRequired,
@@ -63,7 +60,6 @@ MemoEditScreen.propType = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F0F4F8',
   },
   inputContainer: {
     flex: 1,

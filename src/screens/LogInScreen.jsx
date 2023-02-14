@@ -71,7 +71,6 @@ export default function LogInScreen(props) {
         />
         <Button
           label="Submit"
-          // eslint-disable-next-line react/jsx-no-bind
           onPress={handlePress}
         />
         <View style={styles.footer}>
@@ -110,9 +109,9 @@ const styles = StyleSheet.create({
   input: {
     fontSize: 16,
     height: 48,
-    borderColor: '#dddddd',
+    borderColor: '#DDDDDD',
     borderWidth: 1,
-    borderoundColor: '#ffffff',
+    backgroundColor: '#ffffff',
     paddingHorizontal: 8,
     marginBottom: 16,
   },
@@ -124,7 +123,7 @@ const styles = StyleSheet.create({
   footerLink: {
     fontSize: 14,
     lineHeight: 24,
-    color: '#05FF00',
+    color: '#467FD3',
   },
   footer: {
     flexDirection: 'row',

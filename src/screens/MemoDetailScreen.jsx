@@ -1,5 +1,5 @@
-import { shape, string } from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { shape, string } from 'prop-types';
 import {
   View, ScrollView, Text, StyleSheet,
 } from 'react-native';
@@ -9,11 +9,8 @@ import CircleButton from '../components/CircleButton';
 import { dateToString } from '../Utils';
 
 export default function MemoDetailScreen(props) {
-  // eslint-disable-next-line react/prop-types
   const { navigation, route } = props;
-  // eslint-disable-next-line react/prop-types
   const { id } = route.params;
-  // eslint-disable-next-line no-shadow
   const [memo, setMemo] = useState(null);
 
   useEffect(() => {
@@ -56,7 +53,7 @@ export default function MemoDetailScreen(props) {
   );
 }
 
-MemoDetailScreen.propType = {
+MemoDetailScreen.propTypes = {
   route: shape({
     params: shape({ id: string }),
   }).isRequired,
@@ -68,19 +65,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   memoHeader: {
-    backgroundColor: '#05FF00',
+    backgroundColor: '#467FD3',
     height: 96,
     justifyContent: 'center',
     paddingVertical: 24,
     paddingHorizontal: 19,
   },
   memoTitle: {
-    color: '#862121',
-    fontSize: 24,
+    color: '#ffffff',
+    fontSize: 20,
+    lineHeight: 32,
     fontWeight: 'bold',
   },
   memoDate: {
-    color: '#862121',
+    color: '#ffffff',
     fontSize: 12,
     lineHeight: 16,
   },
@@ -92,6 +90,5 @@ const styles = StyleSheet.create({
   memoText: {
     fontSize: 16,
     lineHeight: 24,
-    color: '#000000',
   },
 });

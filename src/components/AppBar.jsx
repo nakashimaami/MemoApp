@@ -5,7 +5,7 @@ export default function AppBar() {
   return (
     <View style={styles.appbar}>
       <View style={styles.appbarInner}>
-        <Text style={styles.appbarTitle}>MemoApp</Text>
+        <Text style={styles.appbarTitle}>Memo App</Text>
         <Text style={styles.appbarRight}>ログアウト</Text>
       </View>
     </View>
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   appbar: {
     width: '100%',
     height: 104,
-    backgroundColor: '#05FF00',
+    backgroundColor: '#467FD3',
     justifyContent: 'flex-end',
   },
   appbarInner: {
@@ -26,13 +26,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 19,
     bottom: 16,
-    color: 'rgba(134,33,33,0.7)',
+    color: 'rgba(255, 255, 255, 0.8)',
   },
   appbarTitle: {
     marginBottom: 8,
     fontSize: 22,
     lineHeight: 32,
-    color: '#862121',
+    color: '#ffffff',
     fontWeight: 'bold',
   },
 });

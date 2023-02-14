@@ -1,10 +1,9 @@
-import { bool } from 'prop-types';
 import React from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
+import { bool } from 'prop-types';
 
 export default function Loading(props) {
-  // eslint-disable-next-line no-useless-rename
-  const { isLoading: isLoading } = props;
+  const { isLoading } = props;
   if (!isLoading) {
     return null;
   }
@@ -16,6 +15,7 @@ export default function Loading(props) {
     </View>
   );
 }
+
 Loading.propTypes = {
   isLoading: bool,
 };
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     left: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.5)',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
     zIndex: 5,
   },
   inner: {

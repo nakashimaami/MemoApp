@@ -20,12 +20,9 @@
     "rules": {
         "no-use-before-define": 0,
         "react/prop-types": ["error",{ "ignore": ["navigation"] }],
-        "import/prefer-default-export": 0,
-        // "preset": "react-native",
-        // "transformIgnorePatterns": [
-        // "/node_modules/(?!native-base|react-native-router-flux)/"],
-        "react/function-component-definition": [
-            2, { "namedComponents": "function-declaration" }
-        ]
+        "import/prefer-default-export": 0
+        // "react/function-component-definition": [
+        //     2, { "namedComponents": "function-declaration" }
+        // ]
     }
 }
